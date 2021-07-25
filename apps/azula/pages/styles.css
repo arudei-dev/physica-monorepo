@@ -1,4 +1,17 @@
-.app {
+body, main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+
+  min-height: 0;
+  min-width: 0;
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+/* .app {
   font-family: sans-serif;
   min-width: 300px;
   max-width: 600px;
@@ -125,4 +138,4 @@
   height: 16px;
   width: 16px;
   margin-right: 4px;
-}
+} */

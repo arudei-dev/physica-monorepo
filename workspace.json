@@ -77,6 +77,84 @@
           }
         }
       }
+    },
+    "gadgets": {
+      "root": "libs/gadgets",
+      "sourceRoot": "libs/gadgets/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/gadgets/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/gadgets"],
+          "options": {
+            "jestConfig": "libs/gadgets/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/gadgets/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "executor": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/react",
+            "outputPath": "dist/storybook/gadgets",
+            "config": {
+              "configFolder": "libs/gadgets/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "gadgets-e2e": {
+      "root": "apps/gadgets-e2e",
+      "sourceRoot": "apps/gadgets-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/gadgets-e2e/cypress.json",
+            "tsConfig": "apps/gadgets-e2e/tsconfig.e2e.json",
+            "devServerTarget": "gadgets:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "gadgets:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/gadgets-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {

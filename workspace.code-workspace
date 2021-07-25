@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "name": "azula (Main Front)",
+      "path": "apps/azula"
+    },
+    {
+      "name": "Gadgets",
+      "path": "libs/gadgets"
+    }
+  ],
+  "settings": {
+    "git.decorations.enabled": false
+  }
+}
